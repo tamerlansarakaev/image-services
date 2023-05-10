@@ -1,0 +1,100 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 530px;
+  width: 100%;
+
+  .formGroup {
+    display: flex;
+    align-items: center;
+  }
+
+  .formTitle {
+    font-style: normal;
+    margin: 0;
+    font-weight: 700;
+    text-align: center;
+    font-size: 50px;
+    line-height: 59px;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 23px;
+  }
+
+  .formInput {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    padding: 22px 20px;
+    width: 100%;
+    max-height: 65px;
+    overflow: hidden;
+    color: #fff;
+    cursor: pointer;
+    background: #323131;
+    transition: 0.5s;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    margin-bottom: 23px;
+  }
+
+  .formInput:hover {
+    background: #232323;
+  }
+
+  .formInput:active {
+    background: #1c1b1b;
+  }
+
+  .formInputTitle {
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+    font-size: 18px;
+    white-space: nowrap;
+    max-width: 300px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .formFileTypesTitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    margin-right: 15px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .formSubmitButton {
+    margin: 0 auto;
+    padding: 9px 19px;
+    transition: 0.5s;
+    background: #ff5353;
+
+    box-shadow: 0px 2px 4px #000;
+    border-radius: 12px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    color: #ffffff;
+  }
+
+  .formSubmitButton:hover {
+    background: #f13a3a;
+  }
+
+  .formSubmitButton:active {
+    background: #c91e1e;
+  }
+}

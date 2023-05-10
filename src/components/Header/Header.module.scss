@@ -1,0 +1,51 @@
+@keyframes appearanceOn {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.header {
+  display: flex;
+  max-width: 100%;
+  width: 100%;
+  justify-content: center;
+  // margin-bottom: 322px;
+
+  .linksGroup {
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+
+    li {
+      font-style: normal;
+      font-weight: 700;
+      outline: none;
+      font-size: 18px;
+      line-height: 21px;
+      margin-bottom: 1px;
+      list-style-type: none;
+      text-transform: uppercase;
+      color: inherit;
+    }
+
+    .link {
+      color: inherit;
+      outline: none;
+      text-decoration: none;
+    }
+  }
+
+  .linkLine {
+    width: 53.85%;
+    height: 4px;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: #ffffff;
+    animation: appearanceOn 1s;
+  }
+}
