@@ -1,5 +1,6 @@
 // Global
 import React from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router';
 
 // Config
@@ -12,8 +13,14 @@ import { useAppSelector } from '../../redux/config';
 // Components
 import Image from '../../components/UI/Image/Image';
 
+// Utils
+import { calculateFizeSize, getImage } from '../../utils';
+import Modal from '../../components/Modal/Modal';
+
 const Compressored: React.FC = () => {
   const [beforeSizeImage, setBeforeSizeImage] = React.useState<string>();
+  const [afterSizeImage, setAfterSizeImage] = React.useState<string>();
+  const [loadingImage, setLoadingImage] = React.useState(true);
 
   const state = useAppSelector((state) => state.rootReducer.globalReducer);
   const navigate = useNavigate();
@@ -24,20 +31,18 @@ const Compressored: React.FC = () => {
     }
 
     if (state.image) {
-      const toMB: number = state.image.size / 1048576;
-      const resultSize = Math.round(toMB * 10) / 10;
-      let afterSize;
+      setBeforeSizeImage(calculateFizeSize(state.image));
+      const response = async () => {
+        if (!state.image) return;
 
-      if (resultSize >= 1) {
-        afterSize = `${resultSize}MB`;
+        const response = await getImage(state.image.url);
+        return response;
+      };
+      response().then((state) => {
+        if (!state?.data.size) return;
 
-        return setBeforeSizeImage(afterSize);
-      } else {
-        const result = state.image.size / 1024;
-        const fixSize = parseFloat(result.toFixed(1));
-
-        return setBeforeSizeImage(`${fixSize}KB`);
-      }
+        setAfterSizeImage(calculateFizeSize(state?.data));
+      });
     }
   }, [state]);
 
@@ -46,25 +51,27 @@ const Compressored: React.FC = () => {
       {state.image ? (
         <>
           <div className={styles.imageGroup}>
-            <Image
-              className={styles.image}
-              urlEndpoint={config.urlEndpoint}
-              path={state.image.filePath}
-            >
-              <span className={styles.imageSize}>
-                Before:{' '}
-                {beforeSizeImage && beforeSizeImage.length
-                  ? beforeSizeImage
-                  : '0KB'}
-              </span>
-            </Image>
+            {state.beforeImage && (
+              <div className={styles.image}>
+                <img src={state.beforeImage} />
+                <span className={styles.imageSize}>
+                  Before:{' '}
+                  {beforeSizeImage && beforeSizeImage.length
+                    ? beforeSizeImage
+                    : '0KB'}
+                </span>
+              </div>
+            )}
 
             <Image
-              path={`tr:lo-false/${state.image.filePath}`}
+              path={state.image.filePath}
               urlEndpoint={config.urlEndpoint}
               className={styles.image}
+              onLoad={() => setLoadingImage(!loadingImage)}
             >
-              <span className={styles.imageSize}>After: </span>
+              <span className={styles.imageSize}>
+                After: {afterSizeImage?.length ? afterSizeImage : `0KB`}
+              </span>
             </Image>
           </div>
 
@@ -79,6 +86,10 @@ const Compressored: React.FC = () => {
       ) : (
         ''
       )}
+
+      <Modal open={loadingImage} className={styles.modal}>
+        <h1>Loading...</h1>
+      </Modal>
     </div>
   );
 };

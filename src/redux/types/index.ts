@@ -9,7 +9,7 @@ export const types = {
 export interface IGlobalReducer {
   loading?: boolean;
   type?: string;
-  beforeImage?: File | null;
+  beforeImage?: string | null;
   size?: Array<string>;
   image?: ResponseFile | null;
 }

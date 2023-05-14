@@ -21,14 +21,16 @@
   .image {
     display: flex;
     flex-direction: column;
-    max-width: 482px;
+    max-width: 500px;
     max-height: 482px;
+    min-height: 400px;
+    width: 100%;
+    height: 100%;
 
     img {
-      max-width: 456px;
-      max-height: 436.55px;
+      min-height: 100%;
+      max-width: 436px;
       border-radius: 12px;
-      width: 100%;
       height: 100%;
     }
 
@@ -69,5 +71,14 @@
   }
   .confirmButton:active {
     background: #4389f3;
+  }
+
+  .modal {
+    padding: 5px;
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 30px;
+    border-radius: 8px;
   }
 }

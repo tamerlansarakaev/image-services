@@ -30,6 +30,7 @@ const fileRef = React.createRef<HTMLInputElement>();
 
 export default function Compression() {
   const [file, setFile] = React.useState<File | null>(null);
+  const [urlImage, setUrlImage] = React.useState<string>();
   const state = useAppSelector((state) => state.rootReducer.globalReducer);
   const navigate = useNavigate();
 
@@ -37,19 +38,7 @@ export default function Compression() {
 
   const handleUploadImage = async (image: File) => {
     if (image) {
-      dispatch(uploadingImage({}));
-      imageKit
-        .upload({
-          file: image,
-          fileName: image.name,
-        })
-        .then(async (state) => {
-          if (!fileRef.current) return;
-          dispatch(uploadImage({ image: state }));
-          fileRef.current.value = '';
-          setFile(null);
-          navigate(`/result`);
-        });
+      setUrlImage(URL.createObjectURL(image));
     }
   };
 
@@ -60,6 +49,24 @@ export default function Compression() {
     : file && !file.name.length
     ? 'Превышает лимит файла'
     : 'Выбрать файл';
+
+  React.useEffect(() => {
+    if (file && urlImage) {
+      dispatch(uploadingImage({}));
+      imageKit
+        .upload({
+          file: file,
+          fileName: file.name,
+        })
+        .then(async (state) => {
+          if (!fileRef.current) return;
+          dispatch(uploadImage({ image: state, beforeImage: urlImage }));
+          fileRef.current.value = '';
+          setFile(null);
+          navigate(`/photo-comressor/result`);
+        });
+    }
+  }, [urlImage]);
 
   return (
     <IKContext publicKey={config.publicKey} urlEndpoint={config.urlEndpoint}>

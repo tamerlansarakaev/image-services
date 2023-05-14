@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  flex-direction: column;
+  margin: 0 auto;
+  font-family: 'Roboto';
+  align-items: center;
+
+  .title {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    background: rgb(59, 59, 59);
+    padding: 0;
+    cursor: pointer;
+    transition: 0.5s;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    box-sizing: border-box;
+    padding: 10px 30px;
+    border-radius: 12px;
+    border: none;
+  }
+
+  .button:hover {
+    background: rgb(36, 36, 36);
+  }
+
+  .button:active {
+    background: rgb(25, 25, 25);
+  }
+}
