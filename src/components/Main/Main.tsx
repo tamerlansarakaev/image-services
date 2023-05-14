@@ -1,12 +1,13 @@
 import styles from './Main.module.scss';
-import Compression from '../Compression/Compression';
 
-export default function Main() {
+interface IMain {
+  children: React.ReactNode;
+}
+
+export default function Main({ children }: IMain) {
   return (
     <>
-      <div className={styles.main}>
-        <Compression />
-      </div>
+      <div className={styles.main}>{children}</div>
     </>
   );
 }
