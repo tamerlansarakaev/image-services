@@ -25,6 +25,7 @@ export const globalReducer = createReducer(initialState, (builder) => {
       state.loading = false;
       state.type = action.type;
       state.image = action.payload.image;
+      state.beforeImage = action.payload.beforeImage;
     })
     .addCase(saveSizeAfterImage, (state, action) => {
       state.type = action.type;

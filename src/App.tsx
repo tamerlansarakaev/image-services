@@ -8,6 +8,7 @@ import './App.css';
 import Home from './pages/Home/Home';
 import { useAppSelector } from './redux/config';
 import Compressored from './pages/Compressored/Compressored';
+import NotFound from './pages/404/404';
 
 function App() {
   const globalState = useAppSelector(
@@ -22,7 +23,8 @@ function App() {
           <Header links={links} />
           <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={<Compressored />} path={`result`} />) : ( ''
+            <Route element={<Compressored />} path={`photo-comressor/result`} />
+            <Route element={<NotFound />} path='*'/>
           </Routes>
         </div>
       </div>
