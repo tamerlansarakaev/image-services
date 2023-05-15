@@ -77,7 +77,7 @@ const Compressored: React.FC = () => {
           <div className={styles.buttonGroup}>
             <button
               className={styles.canselButton}
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/image-compressor')}
             >
               Вернуться
             </button>
