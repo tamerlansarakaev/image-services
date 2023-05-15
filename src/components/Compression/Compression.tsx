@@ -47,7 +47,7 @@ export default function Compression() {
   };
 
   const validateInputFile = state.loading
-    ? 'Loading...'
+    ? 'Загрузка...'
     : file && file.name.length
     ? file.name
     : file && !file.name.length
