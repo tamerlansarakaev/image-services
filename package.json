@@ -1,7 +1,7 @@
 {
   "name": "imagecompressor",
   "private": true,
-  "homepage": "https://tamerlansarakaev.github.io/Image-Compressor",
+  "homepage": "https://tamerlansarakaev.github.io/imagecomressor",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
