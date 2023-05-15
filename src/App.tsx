@@ -22,7 +22,7 @@ function App() {
           <Header links={links} />
           <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={<Compressored />} path={`photo-comressor/result`} />
+            <Route element={<Compressored />} path={`image-comressor/result`} />
             <Route element={<NotFound />} path="*" />
           </Routes>
         </div>
