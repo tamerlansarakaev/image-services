@@ -13,7 +13,7 @@
 My pet-project gives you opportunity to compress your images, for 2x to 10x. That give to save you images equally quality but save your memory.
 I think it's amazing.
 
-I will wait you quessions for email or telegram!
+I will wait your quessions for email or telegram!
 
 Telegram: https://t.me/tamerlansarakaev
 #
