@@ -1,6 +1,5 @@
 // Global
 import React from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router';
 
 // Config
@@ -11,11 +10,11 @@ import styles from './Compressored.module.scss';
 import { useAppSelector } from '../../redux/config';
 
 // Components
+import Modal from '../../components/Modal/Modal';
 import Image from '../../components/UI/Image/Image';
 
 // Utils
 import { calculateFizeSize, getImage } from '../../utils';
-import Modal from '../../components/Modal/Modal';
 
 const Compressored: React.FC = () => {
   const [beforeSizeImage, setBeforeSizeImage] = React.useState<string>();
@@ -75,13 +74,21 @@ const Compressored: React.FC = () => {
             </Image>
           </div>
 
-          <button className={styles.confirmButton}>
-            <a
-              href={`${config.urlEndpoint}/tr:lo-true/${state.image.filePath}?ik-attachment=true`}
+          <div className={styles.buttonGroup}>
+            <button
+              className={styles.canselButton}
+              onClick={() => navigate('/')}
             >
-              скачать
-            </a>
-          </button>
+              Вернуться
+            </button>
+            <button className={styles.confirmButton}>
+              <a
+                href={`${config.urlEndpoint}/tr:lo-true/${state.image.filePath}?ik-attachment=true`}
+              >
+                скачать
+              </a>
+            </button>
+          </div>
         </>
       ) : (
         ''

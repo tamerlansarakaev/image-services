@@ -98,3 +98,31 @@
     background: #c91e1e;
   }
 }
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto;
+  box-sizing: border-box;
+  font-weight: 700;
+  gap: 15px;
+
+  &Title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &Button {
+    border: none;
+    background: rgb(236, 28, 28);
+    padding: 8px 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    border-radius: 12px;
+    color: #fff;
+    margin: 0 auto;
+  }
+}
