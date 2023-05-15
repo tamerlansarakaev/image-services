@@ -5,8 +5,8 @@
 ![result](https://github.com/tamerlansarakaev/image-compressor/assets/96797238/bc6042a3-d992-488f-bef8-b70f486e72df)
 
 # How to start
-```1. npm install```
-```2. npm run dev```
+1. ```npm install```
+2. ```npm run dev```
 
 # About pet-project
 
