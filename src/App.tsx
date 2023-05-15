@@ -13,7 +13,7 @@ import NotFound from './pages/404/404';
 import './App.css';
 
 function App() {
-  const [links] = React.useState([{ title: 'Главная', href: '/' }]);
+  const [links] = React.useState([{ title: 'Главная', href: '/image-compressor' }]);
 
   return (
     <BrowserRouter>
@@ -21,7 +21,7 @@ function App() {
         <div className="container">
           <Header links={links} />
           <Routes>
-            <Route element={<Home />} path="/" />
+            <Route element={<Home />} path="/image-compressor" />
             <Route element={<Compressored />} path={`image-comressor/result`} />
             <Route element={<NotFound />} path="*" />
           </Routes>

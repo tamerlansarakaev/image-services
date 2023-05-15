@@ -10,7 +10,7 @@ export default function NotFound() {
     <Main>
       <div className={styles.container}>
         <h1 className={styles.title}>Page Not Found</h1>
-        <button onClick={() => navigate('/')} className={styles.button}>
+        <button onClick={() => navigate('/image-compressor')} className={styles.button}>
           Return
         </button>
       </div>
