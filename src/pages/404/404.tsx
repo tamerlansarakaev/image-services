@@ -1,4 +1,3 @@
-import React from 'react';
 import Main from '../../components/Main/Main';
 
 import styles from './404.module.scss';
