@@ -4,17 +4,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // Components
 import Header from './components/Header/Header';
 
-import './App.css';
+// Pages
 import Home from './pages/Home/Home';
-import { useAppSelector } from './redux/config';
 import Compressored from './pages/Compressored/Compressored';
 import NotFound from './pages/404/404';
 
+// Styles
+import './App.css';
+
 function App() {
-  const globalState = useAppSelector(
-    (state) => state.rootReducer.globalReducer
-  );
-  const [links] = React.useState([{ title: 'Home', href: '/' }]);
+  const [links] = React.useState([{ title: 'Главная', href: '/' }]);
 
   return (
     <BrowserRouter>
@@ -24,7 +23,7 @@ function App() {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Compressored />} path={`photo-comressor/result`} />
-            <Route element={<NotFound />} path='*'/>
+            <Route element={<NotFound />} path="*" />
           </Routes>
         </div>
       </div>
@@ -33,4 +32,3 @@ function App() {
 }
 
 export default App;
-

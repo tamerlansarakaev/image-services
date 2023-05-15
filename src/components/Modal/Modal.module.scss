@@ -1,6 +1,9 @@
 .modal {
   display: flex;
   top: 0;
+  left: 0;
+  padding: 10px;
+  box-sizing: border-box;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -22,6 +25,7 @@
     border: none;
     flex-direction: column;
     background: #fff;
+    position: relative;
     border-radius: 12px;
     padding: 10px 20px;
   }

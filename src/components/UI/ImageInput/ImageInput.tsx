@@ -20,6 +20,7 @@ const ImageInput = React.forwardRef(
         style={styles ? styles : { visibility: 'hidden', display: 'none' }}
         className={className ? className : ''}
         fileName={fileName}
+        accept="image/jpeg,image/webp"
         value={value}
         inputRef={ref}
         id={id}

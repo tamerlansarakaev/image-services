@@ -5,20 +5,23 @@ import { ReactSVG } from 'react-svg';
 // Styles
 import styles from './Compression.module.scss';
 
+// Components
+import ImageInput from '../UI/ImageInput/ImageInput';
+import { IKContext } from 'imagekitio-react';
+import ImageKit from 'imagekit';
+
 // Icon
 import FileIcon from '../Main/assets/fileUpload.svg';
 
 // Other
-import ImageInput from '../UI/ImageInput/ImageInput';
-import { IKContext } from 'imagekitio-react';
 import { config } from '../../api';
-import ImageKit from 'imagekit';
 import { useAppDispatch, useAppSelector } from '../../redux/config';
 import {
   uploadImage,
   uploadingImage,
 } from '../../redux/reducers/globalReducer';
 import { useNavigate } from 'react-router';
+import Modal from '../Modal/Modal';
 
 const imageKit = new ImageKit({
   privateKey: config.privateKey,
@@ -31,6 +34,7 @@ const fileRef = React.createRef<HTMLInputElement>();
 export default function Compression() {
   const [file, setFile] = React.useState<File | null>(null);
   const [urlImage, setUrlImage] = React.useState<string>();
+  const [statusModal, setStatusModal] = React.useState<boolean>(false);
   const state = useAppSelector((state) => state.rootReducer.globalReducer);
   const navigate = useNavigate();
 
@@ -51,7 +55,7 @@ export default function Compression() {
     : 'Выбрать файл';
 
   React.useEffect(() => {
-    if (file && urlImage) {
+    if (file && urlImage && file.size < 25165824) {
       dispatch(uploadingImage({}));
       imageKit
         .upload({
@@ -65,6 +69,11 @@ export default function Compression() {
           setFile(null);
           navigate(`/photo-comressor/result`);
         });
+    } else if (file && file?.size > 25165824) {
+      if (!fileRef.current) return;
+      fileRef.current.value = '';
+      setStatusModal(true);
+      setFile(null)
     }
   }, [urlImage]);
 
@@ -100,6 +109,17 @@ export default function Compression() {
           {state.loading ? 'Загрузка...' : 'Подтвердить'}
         </button>
       </form>
+      <Modal open={statusModal} onClose={() => setStatusModal(false)}>
+        <div className={styles.modal}>
+          <h1 className={styles.modalTitle}>Максимальный размер файла: 25MB</h1>
+          <button
+            className={styles.modalButton}
+            onClick={() => setStatusModal(false)}
+          >
+            Закрыть
+          </button>
+        </div>
+      </Modal>
     </IKContext>
   );
 }
