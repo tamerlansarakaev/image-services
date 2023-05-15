@@ -54,7 +54,7 @@ const Compressored: React.FC = () => {
               <div className={styles.image}>
                 <img src={state.beforeImage} />
                 <span className={styles.imageSize}>
-                  Before:{' '}
+                  До:{' '}
                   {beforeSizeImage && beforeSizeImage.length
                     ? beforeSizeImage
                     : '0KB'}
@@ -69,7 +69,7 @@ const Compressored: React.FC = () => {
               onLoad={() => setLoadingImage(!loadingImage)}
             >
               <span className={styles.imageSize}>
-                After: {afterSizeImage?.length ? afterSizeImage : `0KB`}
+                После: {afterSizeImage?.length ? afterSizeImage : `0KB`}
               </span>
             </Image>
           </div>
@@ -95,7 +95,7 @@ const Compressored: React.FC = () => {
       )}
 
       <Modal open={loadingImage} className={styles.modal}>
-        <h1>Loading...</h1>
+        <h1>Загрузка...</h1>
       </Modal>
     </div>
   );
