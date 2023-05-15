@@ -13,7 +13,9 @@ import NotFound from './pages/404/404';
 import './App.css';
 
 function App() {
-  const [links] = React.useState([{ title: 'Главная', href: '/image-compressor' }]);
+  const [links] = React.useState([
+    { title: 'Главная', href: '/image-compressor/' },
+  ]);
 
   return (
     <BrowserRouter>
