@@ -35,3 +35,12 @@ export const getImage = async (url: string) => {
   });
   return response;
 };
+
+export const searchType = (file: File) => {
+  const validateType = ['image/jpeg', 'image/webp', 'image/jpg'];
+  const findIndex = validateType.findIndex((state) => {
+    return state === file.type;
+  });
+
+  return findIndex;
+};

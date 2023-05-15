@@ -118,11 +118,20 @@
     border: none;
     background: rgb(236, 28, 28);
     padding: 8px 15px;
+    transition: 0.5s;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 16px;
     border-radius: 12px;
+    cursor: pointer;
     color: #fff;
     margin: 0 auto;
+  }
+  &Button:hover {
+    background: #d73232;
+  }
+
+  &Button:active {
+    background: #eb4848;
   }
 }

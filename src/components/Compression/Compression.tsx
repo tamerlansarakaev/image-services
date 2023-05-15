@@ -22,6 +22,7 @@ import {
 } from '../../redux/reducers/globalReducer';
 import { useNavigate } from 'react-router';
 import Modal from '../Modal/Modal';
+import { searchType } from '../../utils';
 
 const imageKit = new ImageKit({
   privateKey: config.privateKey,
@@ -34,7 +35,10 @@ const fileRef = React.createRef<HTMLInputElement>();
 export default function Compression() {
   const [file, setFile] = React.useState<File | null>(null);
   const [urlImage, setUrlImage] = React.useState<string>();
-  const [statusModal, setStatusModal] = React.useState<boolean>(false);
+  const [statusModal, setStatusModal] = React.useState({
+    status: false,
+    title: '',
+  });
   const state = useAppSelector((state) => state.rootReducer.globalReducer);
   const navigate = useNavigate();
 
@@ -55,7 +59,10 @@ export default function Compression() {
     : 'Выбрать файл';
 
   React.useEffect(() => {
-    if (file && urlImage && file.size < 25165824) {
+    if (!file) return;
+    const fileIndex = searchType(file);
+
+    if (urlImage && file.size < 25165824 && fileIndex !== -1) {
       dispatch(uploadingImage({}));
       imageKit
         .upload({
@@ -72,8 +79,20 @@ export default function Compression() {
     } else if (file && file?.size > 25165824) {
       if (!fileRef.current) return;
       fileRef.current.value = '';
-      setStatusModal(true);
-      setFile(null)
+      setStatusModal({
+        ...statusModal,
+        status: true,
+        title: 'Максимальный размер файла 25MB',
+      });
+      setFile(null);
+    } else if (fileIndex === -1 && fileRef.current) {
+      fileRef.current.value = '';
+      setStatusModal({
+        ...statusModal,
+        status: true,
+        title: 'Недоступный формат файла.',
+      });
+      setFile(null);
     }
   }, [urlImage]);
 
@@ -109,12 +128,15 @@ export default function Compression() {
           {state.loading ? 'Загрузка...' : 'Подтвердить'}
         </button>
       </form>
-      <Modal open={statusModal} onClose={() => setStatusModal(false)}>
+      <Modal
+        open={statusModal.status}
+        onClose={() => setStatusModal({ title: '', status: false })}
+      >
         <div className={styles.modal}>
-          <h1 className={styles.modalTitle}>Максимальный размер файла: 25MB</h1>
+          <h1 className={styles.modalTitle}>{statusModal.title}</h1>
           <button
             className={styles.modalButton}
-            onClick={() => setStatusModal(false)}
+            onClick={() => setStatusModal({ title: '', status: false })}
           >
             Закрыть
           </button>
