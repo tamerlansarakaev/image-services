@@ -68,6 +68,7 @@ export default function Compression() {
         .upload({
           file: file,
           fileName: file.name,
+          tags: [file.type],
         })
         .then(async (state) => {
           if (!fileRef.current) return;

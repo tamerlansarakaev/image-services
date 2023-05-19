@@ -8,6 +8,7 @@ const initialState: IGlobalReducer = {
   beforeImage: null,
   size: ['', ''],
   links: [],
+  uploadFile: null,
   type: '',
 };
 
@@ -16,6 +17,11 @@ export const uploadImage = createAction<IGlobalReducer>(types.uploadImage);
 export const saveSizeAfterImage = createAction<IGlobalReducer>(
   types.sizeResultImage
 );
+
+export const startLoading = createAction<IGlobalReducer>(types.startLoading);
+export const endLoading = createAction<IGlobalReducer>(types.endLoading);
+
+export const uploadFile = createAction<IGlobalReducer>(types.uploadFile);
 
 export const globalReducer = createReducer(initialState, (builder) => {
   builder.addCase(uploadingImage, (state, action) => {
@@ -33,6 +39,18 @@ export const globalReducer = createReducer(initialState, (builder) => {
       state.type = action.type;
       state.size = action.payload.size;
     })
+    .addCase(uploadFile, (state, action) => {
+      state.uploadFile = action.payload.uploadFile;
+    })
+    .addCase(startLoading, (state, action) => {
+      state.type = action.payload.type;
+      state.loading = true;
+    })
+    .addCase(endLoading, (state) => {
+      state.type = '';
+      state.loading = false;
+    })
+
     .addDefaultCase((state) => {
       state.links = defaultLinks;
     });

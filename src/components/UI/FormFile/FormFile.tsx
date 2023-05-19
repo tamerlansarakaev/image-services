@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { ReactSVG } from 'react-svg';
+import { IFormFileComponent } from '../../../types/globalTypes';
 
 // Icons
 import FileIcon from '../../Main/assets/fileUpload.svg';
@@ -8,29 +9,32 @@ import FileIcon from '../../Main/assets/fileUpload.svg';
 import ImageInput from '../ImageInput/ImageInput';
 
 import styles from './FormFile.module.scss';
-import Main from '../../Main/Main';
 
-interface IFormFile {
-  titleInput?: string;
-  formatsFile?: string;
-  title: string;
-}
-
-const FormFile: React.FC<IFormFile> = ({ titleInput, formatsFile, title }) => {
-  const [file, setFile] = React.useState<File | null>(null);
-  const fileRef = React.useRef(null);
-  return (
-    <Main>
-      <form className={styles.form}>
+const FormFile: React.FC<IFormFileComponent> = forwardRef(
+  (
+    {
+      titleInput,
+      formatsFile,
+      title,
+      button,
+      onChange,
+      file,
+      onSubmit,
+      className,
+    },
+    ref
+  ) => {
+    return (
+      <form className={className ? className : styles.form} onSubmit={onSubmit}>
         <h1 className={styles.formTitle}>{title}</h1>
         <label htmlFor="fileInput" className={styles.formInput}>
           <div className={styles.formGroup}>
             <span className={styles.formInputTitle}>{titleInput}</span>
             <ImageInput
               id="fileInput"
-              ref={fileRef}
+              ref={ref}
               fileName={file && file.name}
-              onChange={(e) => e.target.files && setFile(e.target.files[0])}
+              onChange={onChange}
             />
           </div>
           <div className={styles.formGroup}>
@@ -38,10 +42,19 @@ const FormFile: React.FC<IFormFile> = ({ titleInput, formatsFile, title }) => {
             <ReactSVG src={FileIcon} />
           </div>
         </label>
-        <button className={styles.formSubmitButton}>Text</button>
+        <button
+          disabled={button && button.disabled}
+          className={
+            button && button.className
+              ? button.className
+              : styles.formSubmitButton
+          }
+        >
+          {button && button.text ? button.text : 'Подтвердить'}
+        </button>
       </form>
-    </Main>
-  );
-};
+    );
+  }
+);
 
 export default FormFile;

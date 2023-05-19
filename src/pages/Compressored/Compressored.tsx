@@ -14,7 +14,7 @@ import Modal from '../../components/Modal/Modal';
 import Image from '../../components/UI/Image/Image';
 
 // Utils
-import { calculateFizeSize, getImage } from '../../utils';
+import { calculateFizeSize, getImage, giveFormatFile } from '../../utils';
 
 const Compressored: React.FC = () => {
   const [beforeSizeImage, setBeforeSizeImage] = React.useState<string>();
@@ -77,13 +77,15 @@ const Compressored: React.FC = () => {
           <div className={styles.buttonGroup}>
             <button
               className={styles.canselButton}
-              onClick={() => navigate('/image-services/image-compressor')}
+              onClick={() => navigate('/image-services/compressor')}
             >
               Вернуться
             </button>
             <button className={styles.confirmButton}>
               <a
-                href={`${config.urlEndpoint}/tr:lo-true/${state.image.filePath}?ik-attachment=true`}
+                href={`${config.urlEndpoint}/tr:lo-true,f-${giveFormatFile(
+                  state.image
+                )}/${state.image.filePath}?ik-attachment=true`}
               >
                 скачать
               </a>

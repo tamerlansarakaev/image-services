@@ -18,10 +18,6 @@ const Home = () => {
     (state) => state.rootReducer.globalReducer.links
   );
 
-  React.useEffect(() => {
-    console.log(links);
-  }, []);
-
   return (
     <Main>
       <div className={styles.main}>
