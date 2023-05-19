@@ -1,5 +1,5 @@
 # Home Page
-![home](https://github.com/tamerlansarakaev/image-compressor/assets/96797238/994ec870-ab93-45c0-ae64-256d1057938e)
+![Home page](https://github.com/tamerlansarakaev/image-services/assets/96797238/e524fca6-8a2b-47df-b058-0beac7b7a117)
 
 # Result Page
 ![result](https://github.com/tamerlansarakaev/image-compressor/assets/96797238/bc6042a3-d992-488f-bef8-b70f486e72df)
