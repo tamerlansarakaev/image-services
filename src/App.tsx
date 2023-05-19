@@ -5,16 +5,17 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 
 // Pages
-import Home from './pages/Home/Home';
 import Compressored from './pages/Compressored/Compressored';
 import NotFound from './pages/404/404';
 
 // Styles
 import './App.css';
+import CompressorPage from './pages/CompressorPage/CompressorPage';
+import Home from './pages/Home/Home';
 
 function App() {
   const [links] = React.useState([
-    { title: 'Главная', href: '/image-compressor/' },
+    { title: 'Главная', href: '/image-services/' },
   ]);
 
   return (
@@ -23,8 +24,12 @@ function App() {
         <div className="container">
           <Header links={links} />
           <Routes>
-            <Route element={<Home />} path="/image-compressor" />
-            <Route element={<Compressored />} path={`image-comressor/result`} />
+            <Route
+              element={<CompressorPage />}
+              path="/image-services/image-compressor"
+            />
+            <Route element={<Compressored />} path={`/image-services/result`} />
+            <Route element={<Home />} path={`/image-services/`} />
             <Route element={<NotFound />} path="*" />
           </Routes>
         </div>

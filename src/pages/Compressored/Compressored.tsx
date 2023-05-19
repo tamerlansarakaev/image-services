@@ -26,7 +26,7 @@ const Compressored: React.FC = () => {
 
   React.useEffect(() => {
     if (!state.image) {
-      navigate('/');
+      navigate('/image-services/image-compressor');
     }
 
     if (state.image) {
@@ -77,7 +77,7 @@ const Compressored: React.FC = () => {
           <div className={styles.buttonGroup}>
             <button
               className={styles.canselButton}
-              onClick={() => navigate('/image-compressor')}
+              onClick={() => navigate('/image-services/image-compressor')}
             >
               Вернуться
             </button>
