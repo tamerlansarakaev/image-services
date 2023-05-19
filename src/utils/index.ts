@@ -1,5 +1,12 @@
 import { ResponseFile } from '../types/globalTypes';
 import axios from 'axios';
+import { config } from '../api';
+import {
+  endLoading,
+  startLoading,
+  uploadFile,
+} from '../redux/reducers/globalReducer';
+import ImageKit from 'imagekit';
 
 export const imageSave = async (file: Blob) => {
   const reader = new FileReader();
@@ -44,3 +51,47 @@ export const searchType = (file: File) => {
 
   return findIndex;
 };
+
+interface IFileUpload {
+  file: File;
+}
+
+const imageKit = new ImageKit({
+  privateKey: config.privateKey,
+  publicKey: config.publicKey,
+  urlEndpoint: config.urlEndpoint,
+});
+
+export const fileUpload = async ({ file }: IFileUpload) => {
+  return async (dispatch: any) => {
+    try {
+      dispatch(startLoading({ type: 'File Upload' }));
+      const response = await imageKit
+        .upload({
+          file: file,
+          fileName: file.name,
+        })
+        .then((response) => {
+          dispatch(uploadFile({ uploadFile: response }));
+          dispatch(endLoading({}));
+        })
+        .catch((err) => console.log(err));
+
+      return response;
+    } catch (err) {
+      return err;
+    }
+  };
+};
+
+export function giveFormatFile(file: ResponseFile) {
+  const filePath = file.filePath;
+  if (filePath.indexOf('jpg') !== -1) {
+    return 'jpg';
+  }
+  if (filePath.indexOf('jpeg') !== -1) {
+    return 'jpeg';
+  } else {
+    return 'auto';
+  }
+}

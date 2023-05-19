@@ -27,14 +27,14 @@ function App() {
           <Routes>
             <Route
               element={<CompressorPage />}
-              path="/image-services/image-compressor"
+              path="/image-services/compressor"
             />
             <Route element={<Compressored />} path={`/image-services/result`} />
             <Route element={<Home />} path={`/image-services/`} />
             <Route element={<NotFound />} path="*" />
             <Route
               element={<ImageConvertor />}
-              path="/image-services/image-conventer/"
+              path="/image-services/conventer/"
             />
           </Routes>
         </div>

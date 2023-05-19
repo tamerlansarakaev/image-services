@@ -4,12 +4,12 @@ import ImageCompressor from '../components/Card/icons/Image Compressor.jpeg';
 export const defaultLinks = [
   {
     title: 'Image Conventer',
-    src: '/image-services/image-conventer/',
+    src: '/image-services/conventer/',
     image: ImageConventerIcon,
   },
   {
     title: 'Image Compressor',
-    src: '/image-services/image-compressor/',
+    src: '/image-services/compressor/',
     image: ImageCompressor,
   },
 ];
