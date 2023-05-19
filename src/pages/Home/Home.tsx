@@ -1,12 +1,8 @@
-import React from 'react';
 import { useNavigate } from 'react-router';
 import { useAppSelector } from '../../redux/config';
 
 // Styles
 import styles from './Home.module.scss';
-
-// Icons
-import ImageCompressorIcon from '../../components/Card/icons/Image Compressor.jpeg';
 
 // Components
 import Card from '../../components/Card/Card';
