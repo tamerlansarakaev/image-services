@@ -1,11 +1,13 @@
 import { createReducer, createAction } from '@reduxjs/toolkit';
 import { IGlobalReducer, types } from '../types';
+import { defaultLinks } from '../../default/defaultLinks';
 
 const initialState: IGlobalReducer = {
   loading: false,
   image: null,
   beforeImage: null,
   size: ['', ''],
+  links: [],
   type: '',
 };
 
@@ -30,5 +32,8 @@ export const globalReducer = createReducer(initialState, (builder) => {
     .addCase(saveSizeAfterImage, (state, action) => {
       state.type = action.type;
       state.size = action.payload.size;
+    })
+    .addDefaultCase((state) => {
+      state.links = defaultLinks;
     });
 });

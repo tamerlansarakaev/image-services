@@ -6,11 +6,18 @@ export const types = {
   sizeResultImage: 'image/save/sizeAfterImage',
 };
 
+interface ILink {
+  title: string;
+  src: string;
+  image: string;
+}
+
 export interface IGlobalReducer {
   loading?: boolean;
   type?: string;
   beforeImage?: string | null;
   size?: Array<string>;
+  links?: ILink[];
   image?: ResponseFile | null;
 }
 

@@ -1,4 +1,6 @@
+import React from 'react';
 import { useNavigate } from 'react-router';
+import { useAppSelector } from '../../redux/config';
 
 // Styles
 import styles from './Home.module.scss';
@@ -12,20 +14,31 @@ import Main from '../../components/Main/Main';
 
 const Home = () => {
   const navigate = useNavigate();
+  const links = useAppSelector(
+    (state) => state.rootReducer.globalReducer.links
+  );
+
+  React.useEffect(() => {
+    console.log(links);
+  }, []);
 
   return (
     <Main>
       <div className={styles.main}>
-        <Card
-          imageUrl={ImageCompressorIcon}
-          title="Image compressor"
-          button={{
-            children: 'Перейти',
-            onClick() {
-              navigate('/image-services/image-compressor');
-            },
-          }}
-        />
+        {links &&
+          links.map((state, i) => (
+            <Card
+              imageUrl={state.image}
+              key={i}
+              title={state.title}
+              button={{
+                children: 'Перейти',
+                onClick() {
+                  navigate(state.src);
+                },
+              }}
+            />
+          ))}
       </div>
     </Main>
   );

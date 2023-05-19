@@ -7,11 +7,12 @@ import Header from './components/Header/Header';
 // Pages
 import Compressored from './pages/Compressored/Compressored';
 import NotFound from './pages/404/404';
+import CompressorPage from './pages/CompressorPage/CompressorPage';
+import Home from './pages/Home/Home';
+import ImageConvertor from './pages/ImageConvertor/ImageConvertor';
 
 // Styles
 import './App.css';
-import CompressorPage from './pages/CompressorPage/CompressorPage';
-import Home from './pages/Home/Home';
 
 function App() {
   const [links] = React.useState([
@@ -31,6 +32,10 @@ function App() {
             <Route element={<Compressored />} path={`/image-services/result`} />
             <Route element={<Home />} path={`/image-services/`} />
             <Route element={<NotFound />} path="*" />
+            <Route
+              element={<ImageConvertor />}
+              path="/image-services/image-conventer/"
+            />
           </Routes>
         </div>
       </div>
