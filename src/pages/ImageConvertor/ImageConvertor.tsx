@@ -45,7 +45,7 @@ const ImageConvertor = () => {
             className={styles.download}
             href={`${config.urlEndpoint}/tr:f-png/${state.uploadFile.filePath}?ik-attachment=true`}
           ></a>
-          <ReactSVG src={DownloadIcon} />
+          <ReactSVG src={DownloadIcon} className={styles.successIcon} />
         </>
       );
     } else {
