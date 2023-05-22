@@ -107,7 +107,7 @@
     display: none;
   }
 
-  .formGroup {
+  .formGroup:first-child {
     width: 100%;
   }
 
@@ -121,7 +121,7 @@
     font-size: 20px !important;
   }
 
-  .formGroup {
+  .formGroup:first-child {
     width: 100%;
   }
 
