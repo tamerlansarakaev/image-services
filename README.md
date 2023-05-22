@@ -2,7 +2,7 @@
 ![Home page](https://github.com/tamerlansarakaev/image-services/assets/96797238/e524fca6-8a2b-47df-b058-0beac7b7a117)
 
 # Result Page
-![result](https://github.com/tamerlansarakaev/image-compressor/assets/96797238/bc6042a3-d992-488f-bef8-b70f486e72df)
+![Result](https://github.com/tamerlansarakaev/image-services/assets/96797238/9f5ac52e-9476-465a-bf0d-c12863538f9f)
 
 # How to start
 1. ```npm install```
