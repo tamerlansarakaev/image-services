@@ -107,6 +107,10 @@
     display: none;
   }
 
+  .formGroup {
+    width: 100%;
+  }
+
   .formInputTitle {
     max-width: 80%;
   }
@@ -115,6 +119,10 @@
 @media screen and (max-width: 320px) {
   .formTitle {
     font-size: 20px !important;
+  }
+
+  .formGroup {
+    width: 100%;
   }
 
   .formInputTitle {
