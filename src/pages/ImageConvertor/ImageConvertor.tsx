@@ -26,7 +26,6 @@ const ImageConvertor = () => {
     e.preventDefault();
     if (!file) return;
     dispatch(await fileUpload({ file }));
-    setFile(null);
   };
 
   function changeButtons() {
