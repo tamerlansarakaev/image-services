@@ -26,6 +26,7 @@ const ImageConvertor = () => {
     e.preventDefault();
     if (!file) return;
     dispatch(await fileUpload({ file }));
+    setFile(null);
   };
 
   function changeButtons() {
@@ -56,7 +57,8 @@ const ImageConvertor = () => {
   React.useEffect(() => {
     if (state && state.type === 'File Upload') {
       setLoading(true);
-    } else {
+    }
+    if (state.uploadFile) {
       setLoading(false);
     }
   }, [state]);
