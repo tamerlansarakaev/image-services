@@ -49,7 +49,7 @@ const ImageConvertor = () => {
         </>
       );
     } else {
-      return <ReactSVG src={DownloadIcon} />;
+      return <ReactSVG src={DownloadIcon} className={styles.successIcon} />;
     }
   }
 
