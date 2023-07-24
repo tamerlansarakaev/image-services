@@ -75,7 +75,7 @@ export default function Compression() {
           dispatch(uploadImage({ image: state, beforeImage: urlImage }));
           fileRef.current.value = '';
           setFile(null);
-          navigate(`/image-services/result`);
+          navigate(`/result`);
         });
     } else if (file && file?.size > 25165824) {
       if (!fileRef.current) return;

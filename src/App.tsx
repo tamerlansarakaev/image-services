@@ -1,23 +1,21 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Components
-import Header from './components/Header/Header';
+import Header from "./components/Header/Header";
 
 // Pages
-import Compressored from './pages/Compressored/Compressored';
-import NotFound from './pages/404/404';
-import CompressorPage from './pages/CompressorPage/CompressorPage';
-import Home from './pages/Home/Home';
-import ImageConvertor from './pages/ImageConvertor/ImageConvertor';
+import Compressored from "./pages/Compressored/Compressored";
+import NotFound from "./pages/404/404";
+import CompressorPage from "./pages/CompressorPage/CompressorPage";
+import Home from "./pages/Home/Home";
+import ImageConvertor from "./pages/ImageConvertor/ImageConvertor";
 
 // Styles
-import './App.css';
+import "./App.css";
 
 function App() {
-  const [links] = React.useState([
-    { title: 'Главная', href: '/image-services/' },
-  ]);
+  const [links] = React.useState([{ title: "Главная", href: "/" }]);
 
   return (
     <BrowserRouter>
@@ -25,17 +23,11 @@ function App() {
         <div className="container">
           <Header links={links} />
           <Routes>
-            <Route
-              element={<CompressorPage />}
-              path="/image-services/compressor"
-            />
-            <Route element={<Compressored />} path={`/image-services/result`} />
-            <Route element={<Home />} path={`/image-services/`} />
+            <Route element={<CompressorPage />} path="/compressor" />
+            <Route element={<Compressored />} path={`/result`} />
+            <Route element={<Home />} path={`/`} />
             <Route element={<NotFound />} path="*" />
-            <Route
-              element={<ImageConvertor />}
-              path="/image-services/conventer/"
-            />
+            <Route element={<ImageConvertor />} path="/conventer" />
           </Routes>
         </div>
       </div>

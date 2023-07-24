@@ -1,12 +1,12 @@
-import { useNavigate } from 'react-router';
-import { useAppSelector } from '../../redux/config';
+import { useNavigate } from "react-router";
+import { useAppSelector } from "../../redux/config";
 
 // Styles
-import styles from './Home.module.scss';
+import styles from "./Home.module.scss";
 
 // Components
-import Card from '../../components/Card/Card';
-import Main from '../../components/Main/Main';
+import Card from "../../components/Card/Card";
+import Main from "../../components/Main/Main";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,24 +15,29 @@ const Home = () => {
   );
 
   return (
-    <Main>
-      <div className={styles.main}>
-        {links &&
-          links.map((state, i) => (
-            <Card
-              imageUrl={state.image}
-              key={i}
-              title={state.title}
-              button={{
-                children: 'Перейти',
-                onClick() {
-                  navigate(state.src);
-                },
-              }}
-            />
-          ))}
-      </div>
-    </Main>
+    <>
+      <Main>
+        <div className={styles.main}>
+          {links &&
+            links.map((state, i) => (
+              <Card
+                imageUrl={state.image}
+                key={i}
+                title={state.title}
+                button={{
+                  children: "Перейти",
+                  onClick() {
+                    navigate(state.src);
+                  },
+                }}
+              />
+            ))}
+        </div>
+        <h3 className={styles.footerTitle}>
+          Не рекомендуем использовать личные фотографии
+        </h3>
+      </Main>
+    </>
   );
 };
 
