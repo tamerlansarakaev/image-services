@@ -1,5 +1,5 @@
-import ImageConventerIcon from "../components/Card/icons/Image Conventer.jpg";
-import ImageCompressor from "../components/Card/icons/Image Compressor.jpeg";
+import ImageConventerIcon from "../components/Card/icons/Image Conventer.webp";
+import ImageCompressor from "../components/Card/icons/Image Compressor.webp";
 
 export const defaultLinks = [
   {
